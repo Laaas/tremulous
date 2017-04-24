@@ -22,15 +22,19 @@ matrix:
     before_install:
     - docker pull wtfbbqhax/tremulous:v3
     - docker run -e PLATFORM -v $(pwd):/usr/src wtfbbqhax/tremulous:v3 ./misc/docker-build.sh
+    script:
+    - true
   - os: linux
     env: PLATFORM=mingw32
     before_install:
     - docker pull wtfbbqhax/tremulous:v3
     - docker run -e PLATFORM -v $(pwd):/usr/src wtfbbqhax/tremulous:v3 ./misc/docker-build.sh
+    script:
+    - true
   - os: osx
     osx_image: xcode8
     compiler: clang
-    env: USE_RESTCLIENT=1 USE_CODEC_VORBIS=1 USE_FREETYPE=1 ARCH=x86_64
+    env: USE_FREETYPE=1 ARCH=x86_64
     before_install:
     - brew update
     - brew install freetype --universal
