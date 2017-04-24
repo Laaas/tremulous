@@ -16,13 +16,15 @@ notifications:
 matrix:
   include:
   - os: linux
+    env: PLATFORM=linux
     before_install:
     - docker pull wtfbbqhax/tremulous:v3
-    - docker run -e PLATFORM=linux -v $(pwd):/usr/src wtfbbqhax/tremulous:v3 ./misc/docker-build.sh
+    - docker run -e PLATFORM -v $(pwd):/usr/src wtfbbqhax/tremulous:v3 ./misc/docker-build.sh
   - os: linux
+    env: PLATFORM=mingw32
     before_install:
     - docker pull wtfbbqhax/tremulous:v3
-    - docker run -e PLATFORM=mingw32 -v $(pwd):/usr/src wtfbbqhax/tremulous:v3 ./misc/docker-build.sh
+    - docker run -e PLATFORM -v $(pwd):/usr/src wtfbbqhax/tremulous:v3 ./misc/docker-build.sh
   - os: osx
     osx_image: xcode8
     compiler: clang
